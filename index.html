@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Srien Hoany</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
+
+  <!-- Main Styles -->
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body>
+
+<!-- ================= HEADER ================= -->
+<header class="header">
+  <div class="logo" onclick="showPage('home')">Srien Hoany</div>
+
+  <div class="header-icons">
+    <i data-lucide="home" onclick="showPage('home')"></i>
+    <i data-lucide="user" onclick="showPage('contact')"></i>
+    <i data-lucide="feather" onclick="showPage('poetry')"></i>
+    <i data-lucide="instagram" onclick="openInstagram()"></i>
+    <i data-lucide="shopping-cart" onclick="showPage('shop')"></i>
+    <i data-lucide="menu" onclick="toggleSidebar()"></i>
+  </div>
+</header>
+
+<!-- ================= SIDEBAR ================= -->
+<div id="sidebar" class="sidebar hidden">
+  <span onclick="navigate('home')"><i data-lucide="home"></i> Home</span>
+  <span onclick="navigate('poetry')"><i data-lucide="feather"></i> Poetry</span>
+  <span onclick="navigate('shop')"><i data-lucide="tag"></i> Shop</span>
+  <span onclick="navigate('work')"><i data-lucide="handshake"></i> Work With Me</span>
+  <span onclick="navigate('about')"><i data-lucide="info"></i> About</span>
+  <span onclick="navigate('contact')"><i data-lucide="mail"></i> Contact</span>
+  <span onclick="showPage('cart')"><i data-lucide="shopping-bag"></i> Cart</span>
+
+  <span onclick="openAuth()"><i data-lucide="log-in"></i> Login / Register</span>
+  <hr />
+
+</div>
+<section id="cart" class="page hidden">
+  <h2>Your Cart</h2>
+  <div id="cart-items"></div>
+
+  <button onclick="checkout()">Proceed to Checkout</button>
+</section>
+
+
+<!-- ================= HOME ================= -->
+<section id="home" class="page hero">
+  <div class="hero-overlay">
+    <h1>Srien Hoany</h1>
+    <p class="tagline">She dreams, she builds, she glows.</p>
+    <p class="intro">
+      Poetry, short essays, and quiet power.<br>
+      Srien Hoany is the pen name of Srishti Bhatt.
+    </p>
+
+    <section class="single-box">
+      <button class="explore-btn" onclick="showPage('shop')">Explore</button>
+    </section>
+  </div>
+</section>
+
+
+<!-- ================= POETRY ================= -->
+<section id="poetry" class="page hidden">
+  <h2>Poetry</h2>
+
+  <!-- Category Filters -->
+  <div class="filters">
+    <button onclick="filterPoems('all')">All</button>
+    <button onclick="filterPoems('Unrequited Love')">Unrequited Love</button>
+    <button onclick="filterPoems('Unsaid Feelings')">Unsaid Feelings</button>
+    <button onclick="filterPoems('Womanhood')">Womanhood</button>
+    <button onclick="filterPoems('Self Love')">Self Love</button>
+  </div>
+
+  <!-- Poems will load here -->
+  <div id="poem-list"></div>
+</section>
+
+
+<!-- ================= SHOP ================= -->
+<section id="shop" class="page hidden">
+  <h2>The Srien Collection</h2>
+  <p class="shop-subtitle">Carry a little poetry with you.</p>
+
+  <div class="shop-grid">
+
+    <!-- Book Card -->
+    <div class="shop-card">
+      <img src="images/out-of-sight-cover-1.png" alt="Book cover" />
+      <h3>Out of Sight, but Never Forgotten</h3>
+
+      <p class="book-quote">
+        “For the ones who loved deeply,<br>
+        even when love stayed.”
+      </p>
+
+      <button class="know-more-btn" onclick="openProduct()">Know More →</button>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ================= PRODUCT DETAIL ================= -->
+<section id="product-detail" class="page hidden">
+  <div class="book-detail-wrap">
+
+    <div class="book-image">
+      <img src="images/out-of-sight-cover-2.png" alt="Book cover" />
+    </div>
+
+    <div class="book-content">
+      <h2>Out of Sight, but Never Forgotten</h2>
+      <p class="author">A poetry collection by Srishti Bhatt</p>
+
+      <p class="book-desc">
+        A quiet conversation with loss, longing, self-worth, and becoming.
+        Written for those who loved deeply, stayed soft, and still chose to rise.
+      </p>
+
+      <p class="price">₹275</p>
+
+      <div class="product-actions">
+        <button class="buy-now" onclick="buyNow()">Buy Now</button>
+        <button onclick="addToCart()">Add to Cart</button>
+        <button class="back-btn" onclick="showPage('shop')">Back to Shop</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ================= POEM DETAIL ================= -->
+<section id="poem-detail" class="page hidden">
+  <h2 id="poem-title"></h2>
+  <p id="poem-body"></p>
+  <button onclick="showPage('poetry')">← Back</button>
+</section>
+
+
+<!-- ================= ABOUT ================= -->
+<section id="about" class="page hidden">
+  <p>I write where code meets poetry and softness becomes strength.</p>
+</section>
+
+
+<!-- ================= CONTACT ================= -->
+<section id="contact" class="page hidden">
+  <h2>About The Author</h2>
+
+  <div class="author-section">
+    <div class="author-image">
+      <img src="images/author.jpg" alt="Srishti Bhatt - Srien Hoany">
+    </div>
+
+    <div class="author-text">
+      <p>
+        Srishti Bhatt writes under the pen name <strong>Srien Hoany</strong>.
+        Her poetry reflects love, longing, resilience, and self-growth,
+        expressed through gentle, evocative language that invites readers
+        to find their own reflections within her words.
+      </p>
+    </div>
+  </div>
+
+  <h2>Get in Touch</h2>
+  <p>Email: srienhoany@gmail.com</p>
+</section>
+
+
+<!-- ================= LOGIN MODAL ================= -->
+<div id="auth-modal" class="auth-modal hidden">
+  <div class="auth-box">
+
+    <h2 id="auth-title">Login</h2>
+
+    <input id="auth-email-input" type="email" placeholder="Email" />
+    <input id="auth-pass-input" type="password" placeholder="Password" />
+
+    <button onclick="authSubmit()">Continue</button>
+
+    <p class="auth-switch">
+      Don't have an account?
+      <span onclick="toggleAuthMode()">Register</span>
+    </p>
+
+    <button class="auth-close" onclick="closeAuth()">×</button>
+  </div>
+</div>
+
+
+<!-- ================= FOOTER ================= -->
+<footer class="footer">
+  <h3>Join the Letters</h3>
+  <p class="footer-text">
+    One poem every two weeks. Intimate reflections straight to your inbox.
+  </p>
+
+  <div class="newsletter">
+    <input type="email" placeholder="Enter your email" />
+    <button onclick="subscribe()">Subscribe</button>
+  </div>
+
+  <div class="footer-links">
+    <span onclick="showPage('poetry')">Poetry</span>
+    <span onclick="showPage('shop')">Shop</span>
+    <span onclick="showPage('about')">About</span>
+    <span onclick="showPage('contact')">Contact</span>
+  </div>
+
+  <p class="copyright">
+    © 2025 Srien Hoany
+  </p>
+</footer>
+
+
+<!-- Firebase (optional analytics only) -->
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.7.0/firebase-app.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyAfSHXCNdYJHpoc5s8ucPCS_lV2FTmef8w",
+    authDomain: "srien-hoany.firebaseapp.com",
+    projectId: "srien-hoany",
+    storageBucket: "srien-hoany.firebasestorage.app",
+    messagingSenderId: "431741243238",
+    appId: "1:431741243238:web:93950c59b59c08db7e02a7"
+  };
+
+  initializeApp(firebaseConfig);
+</script>
+
+<!-- Main App Script -->
+<script type="module" src="script.js"></script>
+
+
+<script>
+  lucide.createIcons();
+</script>
+
+</body>
+</html>
